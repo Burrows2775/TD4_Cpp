@@ -77,7 +77,8 @@ MyString::MyString(const MyString& autre) {
 
 void MyString::operator=(const MyString& autre) {
     n = autre.n;
-
+    
+    if(chaine != nullptr) { delete[] chaine; }
     chaine = new char[n + 1];
 
     for (int i = 0; i < n; i++) {
@@ -94,6 +95,7 @@ void MyString::operator=(const char* s) {
         n++;
     }
 
+    if(chaine != nullptr) { delete[] chaine; }
     chaine = new char[n + 1];
 
     for (int i = 0; i < n; i++) {
@@ -121,10 +123,7 @@ void MyString::init(const char* s) {
         n++;
     }
     
-    if (chaine != nullptr) {
-        delete[] chaine;
-    }
-
+    if (chaine != nullptr) {delete[] chaine;}
     chaine = new char[n+1];
 
     for (int i = 0; i < n; i++) {
@@ -140,10 +139,7 @@ void MyString::init(const MyString& autre) {
         n++;
     }
 
-    if (chaine != nullptr) {
-        delete[] chaine;
-    }
-
+    if (chaine != nullptr) {delete[] chaine;}
     chaine = new char[n + 1];
 
     for (int i = 0; i < n; i++) {
